@@ -1,10 +1,12 @@
 <?php
 
+// Definição da classe Produto
 class Produto {
     protected $nome;
     protected $preco;
     protected $quantidade;
 
+    // Método para cadastrar um produto
     public function setProduto($data) {
         // Verifica se o array $data possui todas as chaves necessárias e se os valores não são vazios
         if (isset($data['nome'], $data['preco'], $data['quantidade']) && $data['nome'] !== '' && $data['preco'] !== '' && $data['quantidade'] !== '') {
@@ -17,7 +19,7 @@ class Produto {
         }
     }
     
-
+    // Método para exibir as informações do produto
     public function getProduto() {
         // Exibe as informações do produto atualmente cadastrado
         echo "Nome: {$this->nome}\n";
@@ -26,10 +28,12 @@ class Produto {
     }
 }
 
+// Definição da classe Venda, que herda de Produto
 class Venda extends Produto {
     private $quantidadeVendida = 0; // Inicializa com 0 por padrão
     private $desconto = 0.0; // Inicializa com 0.0 por padrão
 
+    // Método para registrar uma venda
     public function setVenda($quantidadeVendida, $desconto) {
         // Chama setProduto apenas se o produto ainda não estiver cadastrado
         if (empty($this->nome)) {
@@ -51,9 +55,8 @@ class Venda extends Produto {
         }
     }
     
-
+    // Método para exibir as informações da última venda registrada
     public function getVenda() {
-        // Exibe as informações da última venda registrada
         echo "Última venda registrada:\n";
         echo "Nome: {$this->nome}\n";
         echo "Quantidade vendida: {$this->quantidadeVendida}\n";
@@ -61,8 +64,6 @@ class Venda extends Produto {
         echo "Estoque atual: {$this->quantidade}\n";
     }
 }
-
-
 
 // Exemplo de uso:
 
